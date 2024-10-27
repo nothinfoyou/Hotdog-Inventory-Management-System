@@ -1,6 +1,21 @@
 #include <iostream>
 using namespace std;
 
+void quitFunction() {
+	int quitInt;
+	cout << "Would you like to quit?" << endl;
+	cout << "Yes (1)" << endl;
+	cout << "No  (0)" << endl;
+	cin >> quitInt;
+
+	if (quitInt == 0) {
+		mainmenu();
+	}
+	else {
+		exit(0);
+	}
+}
+
 void mainmenu() {
 	int input;
 
@@ -40,20 +55,7 @@ void mainmenu() {
 	}
 
 };
-void quitFunction() {
-	int quitInt;
-	cout << "Would you like to quit?" << endl;
-	cout << "Yes (1)" << endl;
-	cout << "No  (0)" << endl;
-	cin >> quitInt;
 
-	if (quitInt == 0) {
-		mainmenu();
-	}
-	else {
-		exit(0);
-	}
-}
 
 int main()
 {
