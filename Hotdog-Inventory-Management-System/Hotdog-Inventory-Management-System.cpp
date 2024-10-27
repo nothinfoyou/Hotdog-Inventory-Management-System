@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 using namespace std;
 
 
@@ -34,6 +35,8 @@ void mainmenu() {
     cout << "*Quit Program (0)                                 *" << endl;
     cout << "***************************************************" << endl;
     cin >> input;
+    system("cls");
+
 
     switch (input) {
     case 6:
