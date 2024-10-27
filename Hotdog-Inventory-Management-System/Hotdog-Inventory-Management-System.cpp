@@ -2,6 +2,14 @@
 using namespace std;
 int main()
 {
-    cout << "Hello World!\n";
+	mainmenu();
 }
 
+
+void mainmenu() {
+	int input;
+
+	cout << "***************************************************" << endl;
+	cout << "*Welcome to the Hotdog Inventory Management System*" << endl;
+	cout << "*Order (6)                                        *" << 
+};
