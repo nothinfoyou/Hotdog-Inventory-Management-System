@@ -35,7 +35,8 @@ void mainmenu() {
     cout << "*Quit Program (0)                                 *" << endl;
     cout << "***************************************************" << endl;
     cin >> input;
-    system("cls");
+    
+    system("cls"); //this command clears the terminal on windows, there should be a mac version but i havent found it yet.
 
 
     switch (input) {
