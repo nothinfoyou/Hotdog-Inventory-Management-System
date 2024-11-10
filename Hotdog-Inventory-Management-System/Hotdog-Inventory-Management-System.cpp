@@ -26,6 +26,10 @@ void quitFunction() {
 }
 
 void mainmenu() {
+    ifstream fin;
+    ofstream fout;
+
+    fin.open("inventory.txt");
     int input;
 
     cout << "***************************************************" << endl;
