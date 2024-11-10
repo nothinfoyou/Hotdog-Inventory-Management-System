@@ -8,7 +8,7 @@
 
 using namespace std;
 
-struct InventoryItems {
+struct InventoryItem {
     int orderNumber;
     string productName;
     int quantity;
@@ -20,7 +20,7 @@ struct InventoryItems {
 
 void mainmenu();
 void quitFunction();
-void loadData(vector<InventoryItems>& inventory);
+void loadData(vector<InventoryItem>& inventory);
 
 void quitFunction() {
     int quitInt;
@@ -30,20 +30,16 @@ void quitFunction() {
     cin >> quitInt;
 
     if (quitInt == 0) {
-        mainmenu();  
+        mainmenu();
     }
     else {
-        exit(0);  
+        exit(0);
     }
 }
 
 void mainmenu() {
-    vector<InventoryItems> inventory;
-    loadData(inventory);
-    ifstream fin;
-    ofstream fout;
-
-    fin.open("inventory.txt");
+    vector<InventoryItem> inventory;
+    loadData(inventory);  // Load data from file into the inventory vector
 
     int input;
 
@@ -58,9 +54,8 @@ void mainmenu() {
     cout << "*Quit Program (0)                                 *" << endl;
     cout << "***************************************************" << endl;
     cin >> input;
-    
-    system("cls"); //this command clears the terminal on windows, there should be a mac version but i havent found it yet.
 
+    system("cls");  // Clears the console screen on Windows; for Mac/Linux, use "clear"
 
     switch (input) {
     case 6:
@@ -79,16 +74,37 @@ void mainmenu() {
         cout << "Unfinished Search Data Section" << endl;
         break;
     case 1:
-        cout << "Unfinished Report Section" << endl;
+        cout << "Report Section:" << endl;
+        for (const auto& item : inventory) {
+            cout << "Order Number: " << item.orderNumber << ", Product: " << item.productName
+                << ", Quantity: " << item.quantity << ", Arrived On: " << item.arrivedOn
+                << ", Expiration Date: " << item.expirationDate << ", Weight: " << item.weight
+                << ", Supplier: " << item.supplier << endl;
+        }
         break;
     case 0:
         quitFunction();
         break;
     default:
         cout << "Invalid option. Please select a valid menu item." << endl;
-        mainmenu();  
+        mainmenu();
         break;
     }
+}
+
+void loadData(vector<InventoryItem>& inventory) {
+    ifstream fin("inventory.txt");
+    if (!fin) {
+        cout << "Error opening file." << endl;
+        return;
+    }
+
+    InventoryItem item;
+    while (fin >> item.orderNumber >> item.productName >> item.quantity
+        >> item.arrivedOn >> item.expirationDate >> item.weight >> item.supplier) {
+        inventory.push_back(item);
+    }
+    fin.close();
 }
 
 int main() {

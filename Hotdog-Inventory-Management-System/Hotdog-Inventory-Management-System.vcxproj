@@ -133,6 +133,9 @@
   <ItemGroup>
     <ClCompile Include="Hotdog-Inventory-Management-System.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\inventory.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
