@@ -20,8 +20,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\inventory.txt">
-      <Filter>Source Files</Filter>
-    </Text>
+    <Text Include="..\inventory.txt" />
   </ItemGroup>
 </Project>

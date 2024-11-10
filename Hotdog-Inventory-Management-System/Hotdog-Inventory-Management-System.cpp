@@ -8,7 +8,7 @@
 
 using namespace std;
 
-struct InventoryItem {
+struct InventoryItems {
     int orderNumber;
     string productName;
     int quantity;
@@ -20,7 +20,9 @@ struct InventoryItem {
 
 void mainmenu();
 void quitFunction();
-void loadData(vector<InventoryItem>& inventory);
+void loadData(vector<InventoryItems>& inventory);
+void displayItem(const InventoryItems& item);
+void displayAllItems(const vector<InventoryItems>& inventory);
 
 void quitFunction() {
     int quitInt;
@@ -37,9 +39,47 @@ void quitFunction() {
     }
 }
 
+void loadData(vector<InventoryItems>& inventory) {
+    ifstream fin("../inventory.txt");
+    if (!fin) {
+        cout << "Error opening file" << endl;
+        return;
+    }
+
+    InventoryItems item;
+    while (fin >> item.orderNumber >> item.productName >> item.quantity >> item.arrivedOn >> item.expirationDate >> item.weight >> item.supplier) {
+        inventory.push_back(item);
+    }
+    fin.close();
+}
+
+// Function to display a single inventory item
+void displayItem(const InventoryItems& item) {
+    cout << "Order Number: " << item.orderNumber << endl;
+    cout << "Product Name: " << item.productName << endl;
+    cout << "Quantity: " << item.quantity << endl;
+    cout << "Arrived On: " << item.arrivedOn << endl;
+    cout << "Expiration Date: " << item.expirationDate << endl;
+    cout << "Weight: " << fixed << setprecision(2) << item.weight << " lbs" << endl;
+    cout << "Supplier: " << item.supplier << endl;
+    cout << "-----------------------------------" << endl;
+}
+
+// Function to display all inventory items
+void displayAllItems(const vector<InventoryItems>& inventory) {
+    if (inventory.empty()) {
+        cout << "No inventory items to display." << endl;
+        return;
+    }
+
+    for (const auto& item : inventory) {
+        displayItem(item);
+    }
+}
+
 void mainmenu() {
-    vector<InventoryItem> inventory;
-    loadData(inventory);  // Load data from file into the inventory vector
+    vector<InventoryItems> inventory;
+    loadData(inventory);
 
     int input;
 
@@ -55,7 +95,7 @@ void mainmenu() {
     cout << "***************************************************" << endl;
     cin >> input;
 
-    system("cls");  // Clears the console screen on Windows; for Mac/Linux, use "clear"
+    system("cls"); // Clear the screen (Windows-specific)
 
     switch (input) {
     case 6:
@@ -74,13 +114,8 @@ void mainmenu() {
         cout << "Unfinished Search Data Section" << endl;
         break;
     case 1:
-        cout << "Report Section:" << endl;
-        for (const auto& item : inventory) {
-            cout << "Order Number: " << item.orderNumber << ", Product: " << item.productName
-                << ", Quantity: " << item.quantity << ", Arrived On: " << item.arrivedOn
-                << ", Expiration Date: " << item.expirationDate << ", Weight: " << item.weight
-                << ", Supplier: " << item.supplier << endl;
-        }
+        cout << "Report Section" << endl;
+        displayAllItems(inventory);
         break;
     case 0:
         quitFunction();
@@ -90,21 +125,6 @@ void mainmenu() {
         mainmenu();
         break;
     }
-}
-
-void loadData(vector<InventoryItem>& inventory) {
-    ifstream fin("inventory.txt");
-    if (!fin) {
-        cout << "Error opening file." << endl;
-        return;
-    }
-
-    InventoryItem item;
-    while (fin >> item.orderNumber >> item.productName >> item.quantity
-        >> item.arrivedOn >> item.expirationDate >> item.weight >> item.supplier) {
-        inventory.push_back(item);
-    }
-    fin.close();
 }
 
 int main() {

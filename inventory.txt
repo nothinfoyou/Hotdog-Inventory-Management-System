@@ -1,49 +1,50 @@
-1001         Hotdog Buns      12        10/20/2024   11/05/2024      1.5           BunMaster Supply
-1002         Hotdogs          24        10/21/2024   11/10/2024      3.0           DogHouse Meats
-1003         Relish           15        10/22/2024   12/15/2024      2.0           PickleWorks
-1004         Mustard          10        10/22/2024   02/10/2025      1.0           YellowWave Condiments
-1005         Ketchup          18        10/23/2024   03/01/2025      1.5           RedRiver Sauces
-1006         Chili            11        10/23/2024   12/30/2024      2.0           ChiliKing Co.
-1007         Sauerkraut       9         10/24/2024   12/05/2024      2.5           KrautWorld Foods
-1008         Sweet Tea        20        10/25/2024   01/15/2025      3.0           Southern Beverages
-1009         Hotdog Buns      15        10/20/2024   11/05/2024      1.5           BunMaster Supply
-1010         Hotdogs          30        10/21/2024   11/10/2024      3.0           DogHouse Meats
-1011         Relish           8         10/22/2024   12/15/2024      2.0           PickleWorks
-1012         Mustard          12        10/22/2024   02/10/2025      1.0           YellowWave Condiments
-1013         Ketchup          14        10/23/2024   03/01/2025      1.5           RedRiver Sauces
-1014         Chili            17        10/23/2024   12/30/2024      2.0           ChiliKing Co.
-1015         Sauerkraut       6         10/24/2024   12/05/2024      2.5           KrautWorld Foods
-1016         Sweet Tea        22        10/25/2024   01/15/2025      3.0           Southern Beverages
-1017         Hotdog Buns      16        10/20/2024   11/05/2024      1.5           BunMaster Supply
-1018         Hotdogs          28        10/21/2024   11/10/2024      3.0           DogHouse Meats
-1019         Relish           10        10/22/2024   12/15/2024      2.0           PickleWorks
-1020         Mustard          9         10/22/2024   02/10/2025      1.0           YellowWave Condiments
-1021         Ketchup          11        10/23/2024   03/01/2025      1.5           RedRiver Sauces
-1022         Chili            19        10/23/2024   12/30/2024      2.0           ChiliKing Co.
-1023         Sauerkraut       12        10/24/2024   12/05/2024      2.5           KrautWorld Foods
-1024         Sweet Tea        10        10/25/2024   01/15/2025      3.0           Southern Beverages
-1025         Hotdog Buns      13        10/20/2024   11/05/2024      1.5           BunMaster Supply
-1026         Hotdogs          20        10/21/2024   11/10/2024      3.0           DogHouse Meats
-1027         Relish           14        10/22/2024   12/15/2024      2.0           PickleWorks
-1028         Mustard          7         10/22/2024   02/10/2025      1.0           YellowWave Condiments
-1029         Ketchup          13        10/23/2024   03/01/2025      1.5           RedRiver Sauces
-1030         Chili            16        10/23/2024   12/30/2024      2.0           ChiliKing Co.
-1031         Sauerkraut       11        10/24/2024   12/05/2024      2.5           KrautWorld Foods
-1032         Sweet Tea        23        10/25/2024   01/15/2025      3.0           Southern Beverages
-1033         Hotdog Buns      15        10/20/2024   11/05/2024      1.5           BunMaster Supply
-1034         Hotdogs          25        10/21/2024   11/10/2024      3.0           DogHouse Meats
-1035         Relish           10        10/22/2024   12/15/2024      2.0           PickleWorks
-1036         Mustard          8         10/22/2024   02/10/2025      1.0           YellowWave Condiments
-1037         Ketchup          17        10/23/2024   03/01/2025      1.5           RedRiver Sauces
-1038         Chili            12        10/23/2024   12/30/2024      2.0           ChiliKing Co.
-1039         Sauerkraut       14        10/24/2024   12/05/2024      2.5           KrautWorld Foods
-1040         Sweet Tea        19        10/25/2024   01/15/2025      3.0           Southern Beverages
-1041         Hotdog Buns      10        10/20/2024   11/05/2024      1.5           BunMaster Supply
-1042         Hotdogs          22        10/21/2024   11/10/2024      3.0           DogHouse Meats
-1043         Relish           9         10/22/2024   12/15/2024      2.0           PickleWorks
-1044         Mustard          6         10/22/2024   02/10/2025      1.0           YellowWave Condiments
-1045         Ketchup          15        10/23/2024   03/01/2025      1.5           RedRiver Sauces
-1046         Chili            14        10/23/2024   12/30/2024      2.0           ChiliKing Co.
-1047         Sauerkraut       10        10/24/2024   12/05/2024      2.5           KrautWorld Foods
-1048         Sweet Tea        18        10/25/2024   01/15/2025      3.0           Southern Beverages
-1049         Hotdog Buns      11        10/20/2024   11/05/2024      1.5           BunMaster Supply
+101 Buns 12 11/01/2024 11/15/2024 1.5 Bakers_Delight
+102 Ketchup 10 10/25/2024 12/25/2024 0.75 TomatoCo
+103 Mustard 8 10/27/2024 12/22/2024 0.5 SpiceMasters
+104 Relish 15 11/02/2024 12/20/2024 0.6 PickleWorks
+105 Chili 10 10/29/2024 11/20/2024 1.2 HeartyFoods
+106 Sauerkraut 12 11/03/2024 12/18/2024 1.1 KrautKing
+107 Tea 20 11/05/2024 11/25/2024 0.25 LeafyBrews
+108 Buns 14 10/30/2024 11/12/2024 1.5 Bakers_Delight
+109 Ketchup 9 11/01/2024 12/28/2024 0.75 TomatoCo
+110 Mustard 7 10/26/2024 12/20/2024 0.5 SpiceMasters
+111 Relish 13 10/31/2024 12/24/2024 0.6 PickleWorks
+112 Chili 11 10/29/2024 11/18/2024 1.2 HeartyFoods
+113 Sauerkraut 14 11/04/2024 12/15/2024 1.1 KrautKing
+114 Tea 22 11/06/2024 11/27/2024 0.25 LeafyBrews
+115 Buns 10 10/28/2024 11/11/2024 1.5 Bakers_Delight
+116 Ketchup 11 10/30/2024 12/29/2024 0.75 TomatoCo
+117 Mustard 6 11/02/2024 12/23/2024 0.5 SpiceMasters
+118 Relish 18 11/05/2024 12/22/2024 0.6 PickleWorks
+119 Chili 13 10/31/2024 11/25/2024 1.2 HeartyFoods
+120 Sauerkraut 10 11/07/2024 12/19/2024 1.1 KrautKing
+121 Tea 19 10/29/2024 11/26/2024 0.25 LeafyBrews
+122 Buns 12 11/03/2024 11/13/2024 1.5 Bakers_Delight
+123 Ketchup 8 10/25/2024 12/30/2024 0.75 TomatoCo
+124 Mustard 15 11/06/2024 12/28/2024 0.5 SpiceMasters
+125 Relish 9 10/31/2024 12/18/2024 0.6 PickleWorks
+126 Chili 14 11/02/2024 11/22/2024 1.2 HeartyFoods
+127 Sauerkraut 11 11/01/2024 12/16/2024 1.1 KrautKing
+128 Tea 25 11/04/2024 11/24/2024 0.25 LeafyBrews
+129 Buns 13 11/07/2024 11/14/2024 1.5 Bakers_Delight
+130 Ketchup 7 10/28/2024 12/27/2024 0.75 TomatoCo
+131 Mustard 9 11/05/2024 12/26/2024 0.5 SpiceMasters
+132 Relish 16 10/30/2024 12/21/2024 0.6 PickleWorks
+133 Chili 12 11/03/2024 11/21/2024 1.2 HeartyFoods
+134 Sauerkraut 8 11/06/2024 12/20/2024 1.1 KrautKing
+135 Tea 21 10/27/2024 11/23/2024 0.25 LeafyBrews
+136 Buns 10 10/29/2024 11/12/2024 1.5 Bakers_Delight
+137 Ketchup 13 10/25/2024 12/29/2024 0.75 TomatoCo
+138 Mustard 8 11/01/2024 12/24/2024 0.5 SpiceMasters
+139 Relish 12 11/02/2024 12/19/2024 0.6 PickleWorks
+140 Chili 9 10/31/2024 11/26/2024 1.2 HeartyFoods
+141 Sauerkraut 14 11/04/2024 12/15/2024 1.1 KrautKing
+142 Tea 17 11/06/2024 11/27/2024 0.25 LeafyBrews
+143 Buns 11 11/03/2024 11/17/2024 1.5 Bakers_Delight
+144 Ketchup 10 11/07/2024 12/31/2024 0.75 TomatoCo
+145 Mustard 6 10/29/2024 12/25/2024 0.5 SpiceMasters
+146 Relish 20 10/28/2024 12/23/2024 0.6 PickleWorks
+147 Chili 11 10/25/2024 11/30/2024 1.2 HeartyFoods
+148 Sauerkraut 13 11/02/2024 12/14/2024 1.1 KrautKing
+149 Tea 23 11/05/2024 11/29/2024 0.25 LeafyBrews
+150 Buns 9 11/06/2024 11/16/2024 1.5 Bakers_Delight
