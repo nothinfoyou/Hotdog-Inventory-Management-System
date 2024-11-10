@@ -3,12 +3,24 @@
 #include <cstdlib>
 #include <iomanip>
 #include <cmath>
+#include <string>
+#include <vector>
 
 using namespace std;
 
+struct InventoryItems {
+    int orderNumber;
+    string productName;
+    int quantity;
+    string arrivedOn;
+    string expirationDate;
+    double weight;
+    string supplier;
+};
 
 void mainmenu();
 void quitFunction();
+void loadData(vector<InventoryItems>& inventory);
 
 void quitFunction() {
     int quitInt;
@@ -26,10 +38,13 @@ void quitFunction() {
 }
 
 void mainmenu() {
+    vector<InventoryItems> inventory;
+    loadData(inventory);
     ifstream fin;
     ofstream fout;
 
     fin.open("inventory.txt");
+
     int input;
 
     cout << "***************************************************" << endl;
