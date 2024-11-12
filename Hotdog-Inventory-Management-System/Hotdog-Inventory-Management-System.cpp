@@ -26,7 +26,7 @@ void displayAllItems(const vector<InventoryItems>& inventory);
 
 void quitFunction() {
     int quitInt;
-    cout << "Would you like to quit?" << endl;
+    cout << "Are you sure you would you like to quit?" << endl;
     cout << "Yes (1)" << endl;
     cout << "No  (0)" << endl;
     cin >> quitInt;
