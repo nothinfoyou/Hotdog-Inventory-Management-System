@@ -92,8 +92,10 @@ void mainmenu() {
     cout << "*Search Data  (2)                                 *" << endl;
     cout << "*Report       (1)                                 *" << endl;
     cout << "*Quit Program (0)                                 *" << endl;
+    cout << "Enter your selection:                             *" << endl;
     cout << "***************************************************" << endl;
     cin >> input;
+
 
     system("cls"); // Clear the screen (Windows-specific)
 
