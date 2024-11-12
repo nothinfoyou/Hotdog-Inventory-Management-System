@@ -125,7 +125,7 @@ void mainmenu() {
     default:
         cout << "Invalid option. Please select a valid menu item." << endl;
         mainmenu();
-        break;
+        break; //breaks
     }
 }
 
