@@ -81,26 +81,62 @@ void displayAllItems(const vector<InventoryItems>& inventory) {
 
 //Function to search for items by product name
 void searchItem(const vector<InventoryItems>& inventory) {
+    string field;
+    cout << "***************************************************" << endl;
+    cout << "*Welcome to the Hotdog Inventory Management System*" << endl;
+    cout << "*Order        (6)                                 *" << endl;
+    cout << "*Enter Data   (5)                                 *" << endl;
+    cout << "*Remove Data  (4)                                 *" << endl;
+    cout << "*Edit Data    (3)                                 *" << endl;
+    cout << "*Search Data  (2)                                 *" << endl;
+    cout << "*Report       (1)                                 *" << endl;
+    cout << "*Quit Program (0)                                 *" << endl;
+    cout << "Enter your selection:                             *" << endl;
+    cout << "***************************************************" << endl;
+    cin >> field;
+    bool found = false;
+
+    if (field == "Order_Number") {
+        int orderNumber;
+        cout << "Enter Order Number: ";
+        cin >> orderNumber;
+        for (const auto& item : inventory) {
+            if (item.orderNumber == orderNumber) {
+
+                displayItem(item);
+                found = true;
+            }
+        }
+    }
+    else {
+        cout << "Invalid field. Please try again." << endl;
+    }
+    if (!found) {
+        cout << "No items found with the given search criteria." << endl;
+    }
+    
+    
+    
     if (inventory.empty()) {
         cout << "No inventory items to search." << endl;
         return;
     }
 
-    string searchTerm;
-    cout << "Enter the name of the item you are searching for (case specific): " << endl;
-    cin >> ws; //clears whitespace
-    getline(cin, searchTerm);
+    //string searchTerm;
+    //cout << "Enter the name of the item you are searching for (case specific): " << endl;
+    //cin >> ws; //clears whitespace
+    //getline(cin, searchTerm);
 
-    bool found = false;
-    for (const auto& item : inventory) {
-        if (item.productName.find(searchTerm) != string::npos) {
-            displayItem(item);
-            found = true;
-        }
-    }
-    if (!found) {
-        cout << "No items matched '" << searchTerm << "'." << endl;
-    }
+    //bool found = false;
+    //for (const auto& item : inventory) {
+    //    if (item.productName.find(searchTerm) != string::npos) {
+    //        displayItem(item);
+    //        found = true;
+    //    }
+    //}
+    //if (!found) {
+    //    cout << "No items matched '" << searchTerm << "'." << endl;
+    //}
 }
 
 void mainmenu() {
