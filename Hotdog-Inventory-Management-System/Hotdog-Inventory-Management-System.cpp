@@ -102,7 +102,6 @@ void searchItem(const vector<InventoryItems>& inventory) {
         cin >> orderNumber;
         for (const auto& item : inventory) {
             if (item.orderNumber == orderNumber) {
-
                 displayItem(item);
                 found = true;
             }
@@ -243,7 +242,6 @@ void mainmenu() {
         cout << "Unfinished Edit Data Section" << endl;
         break;
     case 2:
-        cout << "Search Section" << endl;
         searchItem(inventory);
         break;
     case 1:
