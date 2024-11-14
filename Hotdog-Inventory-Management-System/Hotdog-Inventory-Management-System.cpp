@@ -81,7 +81,7 @@ void displayAllItems(const vector<InventoryItems>& inventory) {
 
 //Function to search for items by product name
 void searchItem(const vector<InventoryItems>& inventory) {
-    string field;
+    int field;
     cout << "*****************************************************" << endl;
     cout << "*Search Section                                     *" << endl;
     cout << "*Order Number   (6)                                 *" << endl;
@@ -96,13 +96,81 @@ void searchItem(const vector<InventoryItems>& inventory) {
     cin >> field;
     bool found = false;
 
-    if (field == "Order_Number") {
+    if (field == 6) {
         int orderNumber;
         cout << "Enter Order Number: ";
         cin >> orderNumber;
         for (const auto& item : inventory) {
             if (item.orderNumber == orderNumber) {
 
+                displayItem(item);
+                found = true;
+            }
+        }
+    }
+    else if (field == 5) {
+        string productName;
+        cout << "Enter Product Name: ";
+        cin.ignore();
+        getline(cin, productName);
+        for (const auto& item : inventory) {
+            if (item.productName == productName) {
+                displayItem(item);
+                found = true;
+            }
+        }
+    }
+    else if (field == 4) {
+        int quantity;
+        cout << "Enter Quantity: ";
+        cin >> quantity;
+        for (const auto& item : inventory) {
+            if (item.quantity == quantity) {
+                displayItem(item);
+                found = true;
+            }
+        }
+    }
+    else if (field == 3) {
+        string arrivedOn;
+        cout << "Enter Arrived On date: ";
+        cin >> arrivedOn;
+        for (const auto& item : inventory) {
+            if (item.arrivedOn == arrivedOn) {
+                displayItem(item);
+                found = true;
+            }
+        }
+    }
+    else if (field == 2) {
+        string expirationDate;
+        cout << "Enter Expiration Date: ";
+        cin >> expirationDate;
+        for (const auto& item : inventory) {
+            if (item.expirationDate == expirationDate) {
+                displayItem(item);
+                found = true;
+            }
+        }
+    }
+    else if (field == 1) {
+        double weight;
+        cout << "Enter Weight: ";
+        cin >> weight;
+        for (const auto& item : inventory) {
+            if (item.weight == weight) {
+                displayItem(item);
+                found = true;
+            }
+        }
+    }
+    else if (field == 0) {
+        string supplier;
+        cout << "Enter Supplier: ";
+        cin.ignore();
+        getline(cin, supplier);
+        for (const auto& item : inventory) {
+            if (item.supplier == supplier) {
                 displayItem(item);
                 found = true;
             }
