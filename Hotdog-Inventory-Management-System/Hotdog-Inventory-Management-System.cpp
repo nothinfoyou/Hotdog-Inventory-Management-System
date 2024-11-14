@@ -6,18 +6,10 @@
 #include <string>
 #include <vector>
 #include <algorithm> //for transform
+#include "InventoryObj.cpp"
+#include "BaseReport.h"
 
 using namespace std;
-
-struct InventoryItems {
-    int orderNumber;
-    string productName;
-    int quantity;
-    string arrivedOn;
-    string expirationDate;
-    double weight;
-    string supplier;
-};
 
 void mainmenu();
 void quitFunction();
@@ -73,10 +65,13 @@ void displayAllItems(const vector<InventoryItems>& inventory) {
         cout << "No inventory items to display." << endl;
         return;
     }
+    BaseReport foo;
 
     for (const auto& item : inventory) {
-        displayItem(item);
+        foo.addData(item);
     }
+
+    foo.generateReport();
 }
 
 //Function to search for items by product name

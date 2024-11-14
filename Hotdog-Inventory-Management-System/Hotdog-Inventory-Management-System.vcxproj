@@ -132,13 +132,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BaseReport.cpp" />
+    <ClCompile Include="ExpiredReport.cpp" />
     <ClCompile Include="Hotdog-Inventory-Management-System.cpp" />
+    <ClCompile Include="InventoryObj.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\inventory.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseReport.h" />
+    <ClInclude Include="ExpiredReport.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
