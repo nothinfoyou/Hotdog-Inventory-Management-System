@@ -82,17 +82,17 @@ void displayAllItems(const vector<InventoryItems>& inventory) {
 //Function to search for items by product name
 void searchItem(const vector<InventoryItems>& inventory) {
     string field;
-    cout << "***************************************************" << endl;
-    cout << "*Welcome to the Hotdog Inventory Management System*" << endl;
-    cout << "*Order        (6)                                 *" << endl;
-    cout << "*Enter Data   (5)                                 *" << endl;
-    cout << "*Remove Data  (4)                                 *" << endl;
-    cout << "*Edit Data    (3)                                 *" << endl;
-    cout << "*Search Data  (2)                                 *" << endl;
-    cout << "*Report       (1)                                 *" << endl;
-    cout << "*Quit Program (0)                                 *" << endl;
-    cout << "Enter your selection:                             *" << endl;
-    cout << "***************************************************" << endl;
+    cout << "*****************************************************" << endl;
+    cout << "*Search Section                                     *" << endl;
+    cout << "*Order Number   (6)                                 *" << endl;
+    cout << "*Product Name   (5)                                 *" << endl;
+    cout << "*Quantity       (4)                                 *" << endl;
+    cout << "*Arrived On     (3)                                 *" << endl;
+    cout << "*Expiration Date(2)                                 *" << endl;
+    cout << "*Weight         (1)                                 *" << endl;
+    cout << "*Supplier       (0)                                 *" << endl;
+    cout << "Enter your selection:                               *" << endl;
+    cout << "*****************************************************" << endl;
     cin >> field;
     bool found = false;
 
