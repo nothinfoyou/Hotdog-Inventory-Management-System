@@ -94,6 +94,7 @@ void searchItem(const vector<InventoryItems>& inventory) {
     bool found = false;
     for (const auto& item : inventory) {
         if (item.productName.find(searchTerm) != string::npos) {
+            cout << "Displaying items that include '" << searchTerm << "': \n" << endl;
             displayItem(item);
             found = true;
         }
