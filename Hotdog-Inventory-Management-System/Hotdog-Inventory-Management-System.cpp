@@ -5,6 +5,7 @@
 #include <cmath>
 #include <string>
 #include <vector>
+#include <algorithm> //for transform
 
 using namespace std;
 
@@ -23,6 +24,7 @@ void quitFunction();
 void loadData(vector<InventoryItems>& inventory);
 void displayItem(const InventoryItems& item);
 void displayAllItems(const vector<InventoryItems>& inventory);
+void searchItem(const vector<InventoryItems>& inventory);
 
 void quitFunction() {
     int quitInt;
@@ -77,6 +79,30 @@ void displayAllItems(const vector<InventoryItems>& inventory) {
     }
 }
 
+//Function to search for items by product name
+void searchItem(const vector<InventoryItems>& inventory) {
+    if (inventory.empty()) {
+        cout << "No inventory items to search." << endl;
+        return;
+    }
+
+    string searchTerm;
+    cout << "Enter the name of the item you are searching for (case specific): " << endl;
+    cin >> ws; //clears whitespace
+    getline(cin, searchTerm);
+
+    bool found = false;
+    for (const auto& item : inventory) {
+        if (item.productName.find(searchTerm) != string::npos) {
+            displayItem(item);
+            found = true;
+        }
+    }
+    if (!found) {
+        cout << "No items matched '" << searchTerm << "'." << endl;
+    }
+}
+
 void mainmenu() {
     vector<InventoryItems> inventory;
     loadData(inventory);
@@ -113,7 +139,8 @@ void mainmenu() {
         cout << "Unfinished Edit Data Section" << endl;
         break;
     case 2:
-        cout << "Unfinished Search Data Section" << endl;
+        cout << "Search Section" << endl;
+        searchItem(inventory);
         break;
     case 1:
         cout << "Report Section" << endl;
