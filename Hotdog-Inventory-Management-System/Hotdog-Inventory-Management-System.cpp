@@ -5,7 +5,7 @@
 #include <cmath>
 #include <string>
 #include <vector>
-#include <algorithm> //for transform
+#include <algorithm> // For transform
 
 using namespace std;
 
@@ -25,10 +25,12 @@ void loadData(vector<InventoryItems>& inventory);
 void displayItem(const InventoryItems& item);
 void displayAllItems(const vector<InventoryItems>& inventory);
 void searchItem(const vector<InventoryItems>& inventory);
+void enterData(vector<InventoryItems>& inventory);
+void removeItem(vector<InventoryItems>& inventory);
 
 void quitFunction() {
     int quitInt;
-    cout << "Are you sure you would you like to quit?" << endl;
+    cout << "Are you sure you would like to quit?" << endl;
     cout << "Yes (1)" << endl;
     cout << "No  (0)" << endl;
     cin >> quitInt;
@@ -55,7 +57,6 @@ void loadData(vector<InventoryItems>& inventory) {
     fin.close();
 }
 
-// Function to display a single inventory item
 void displayItem(const InventoryItems& item) {
     cout << "Order Number: " << item.orderNumber << endl;
     cout << "Product Name: " << item.productName << endl;
@@ -67,7 +68,6 @@ void displayItem(const InventoryItems& item) {
     cout << "-----------------------------------" << endl;
 }
 
-// Function to display all inventory items
 void displayAllItems(const vector<InventoryItems>& inventory) {
     if (inventory.empty()) {
         cout << "No inventory items to display." << endl;
@@ -79,7 +79,95 @@ void displayAllItems(const vector<InventoryItems>& inventory) {
     }
 }
 
-//Function to search for items by product name
+void enterData(vector<InventoryItems>& inventory) {
+    InventoryItems newItem;
+    cout << "Please enter the new item's order number: ";
+    cin >> newItem.orderNumber;
+    cin.ignore();
+
+    cout << "Please enter the product name of the new item (case specific): ";
+    getline(cin, newItem.productName);
+
+    cout << "Enter quantity: ";
+    cin >> newItem.quantity;
+    cin.ignore();
+
+    cout << "Enter the arrival date of the new item in the format MM-DD-YYYY: ";
+    getline(cin, newItem.arrivedOn);
+
+    cout << "Enter the expiration date of the new item: ";
+    getline(cin, newItem.expirationDate);
+
+    cout << "Enter the weight of the new item in lbs: ";
+    cin >> newItem.weight;
+    cin.ignore();
+
+    cout << "Enter supplier: ";
+    getline(cin, newItem.supplier);
+
+    inventory.push_back(newItem);
+
+    ofstream fout("../inventory.txt");
+    if (!fout) {
+        cout << "Error updating file." << endl;
+        return;
+    }
+    for (const auto& item : inventory) {
+        fout << item.orderNumber << " " << item.productName << " " << item.quantity << " "
+            << item.arrivedOn << " " << item.expirationDate << " " << item.weight << " "
+            << item.supplier << endl;
+    }
+    fout.close();
+    cout << "\nNew item added successfully!\n" << endl;
+    displayItem(newItem);
+}
+
+void removeItem(vector<InventoryItems>& inventory) {
+    if (inventory.empty()) {
+        cout << "No inventory items to remove." << endl;
+        return;
+    }
+    int orderNumber;
+    cout << "Enter the order number of the item you would like to remove: ";
+    cin >> orderNumber;
+
+    bool found = false;
+    for (size_t i = 0; i < inventory.size(); ++i) {
+        if (inventory[i].orderNumber == orderNumber) {
+            found = true;
+            cout << "Are you sure you want to remove this item?" << endl;
+            displayItem(inventory[i]);
+            cout << "Yes (1) / No (0): ";
+            int confirm;
+            cin >> confirm;
+            if (confirm == 1) {
+                inventory.erase(inventory.begin() + i);
+                cout << "Item removed from inventory." << endl;
+
+                ofstream fout("../inventory.txt");
+                if (!fout) {
+                    cout << "Error updating file." << endl;
+                    return;
+                }
+                for (const auto& item : inventory) {
+                    fout << item.orderNumber << " " << item.productName << " " << item.quantity << " "
+                        << item.arrivedOn << " " << item.expirationDate << " " << item.weight << " "
+                        << item.supplier << endl;
+                }
+                fout.close();
+                cout << "Inventory file updated." << endl;
+            }
+            else {
+                cout << "Item was not removed." << endl;
+            }
+            break;
+        }
+    }
+    if (!found) {
+        cout << "No item found with that order number." << endl;
+    }
+}
+
 void searchItem(const vector<InventoryItems>& inventory) {
     int field;
     cout << "*****************************************************" << endl;
@@ -181,29 +269,6 @@ void searchItem(const vector<InventoryItems>& inventory) {
     if (!found) {
         cout << "No items found with the given search criteria." << endl;
     }
-    
-    
-    
-    if (inventory.empty()) {
-        cout << "No inventory items to search." << endl;
-        return;
-    }
-
-    //string searchTerm;
-    //cout << "Enter the name of the item you are searching for (case specific): " << endl;
-    //cin >> ws; //clears whitespace
-    //getline(cin, searchTerm);
-
-    //bool found = false;
-    //for (const auto& item : inventory) {
-    //    if (item.productName.find(searchTerm) != string::npos) {
-    //        displayItem(item);
-    //        found = true;
-    //    }
-    //}
-    //if (!found) {
-    //    cout << "No items matched '" << searchTerm << "'." << endl;
-    //}
 }
 
 void mainmenu() {
@@ -225,7 +290,6 @@ void mainmenu() {
     cout << "***************************************************" << endl;
     cin >> input;
 
-
     system("cls"); // Clear the screen (Windows-specific)
 
     switch (input) {
@@ -233,10 +297,10 @@ void mainmenu() {
         cout << "Unfinished Order section" << endl;
         break;
     case 5:
-        cout << "Unfinished Enter Data Section" << endl;
+        enterData(inventory);
         break;
     case 4:
-        cout << "Unfinished Remove Data Section" << endl;
+        removeItem(inventory);
         break;
     case 3:
         cout << "Unfinished Edit Data Section" << endl;
@@ -245,7 +309,6 @@ void mainmenu() {
         searchItem(inventory);
         break;
     case 1:
-        cout << "Report Section" << endl;
         displayAllItems(inventory);
         break;
     case 0:
@@ -254,7 +317,7 @@ void mainmenu() {
     default:
         cout << "Invalid option. Please select a valid menu item." << endl;
         mainmenu();
-        break; //breaks
+        break;
     }
 }
 
