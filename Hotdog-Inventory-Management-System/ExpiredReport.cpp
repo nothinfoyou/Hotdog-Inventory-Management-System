@@ -33,17 +33,20 @@ bool ExpiredReport::isExpired(const std::string& expirationDate) const {
 
 // this func iterates through each item and prints out the item description if it is expired
 void ExpiredReport::generateReport() const {
-    std::cout << "----- Expired Inventory Report -----\n";
+
+    cout << "***************************************************" << endl;
+    cout << "* Expired Inventory Report                        *" << endl;
     for (const auto& item : getData()) {
         if (isExpired(item.expirationDate)) {
-            std::cout << "Order Number: " << item.orderNumber << std::endl;
-            std::cout << "Product Name: " << item.productName << std::endl;
-            std::cout << "Quantity: " << item.quantity << std::endl;
+            cout << "* Order Number: " << item.orderNumber << std::endl;
+            cout << "* Product Name: " << item.productName << std::endl;
+            cout << "* Quantity: " << item.quantity << std::endl;
             //std::cout << "Arrived On: " << item.arrivedOn << std::endl;
-            std::cout << "Expiration Date: " << item.expirationDate << std::endl;
+            cout << "* Expiration Date: " << item.expirationDate << std::endl;
             //std::cout << "Weight: " << item.weight << " kg" << std::endl;
             //std::cout << "Supplier: " << item.supplier << std::endl;
-            std::cout << "---------------------------\n";
+            cout << "*--------------------------------------------------" << endl;
         }
     }
+    cout << "***************************************************" << endl;
 }

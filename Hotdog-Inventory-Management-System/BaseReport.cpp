@@ -1,4 +1,5 @@
 #include "BaseReport.h"
+using namespace std;
 /*  This class is used to build a BaseReport
 *       that is then used in child classes to build a more narrowed final report
 *   Sean Armstrong 901 81 1616
@@ -10,15 +11,18 @@ void BaseReport::addData(const InventoryItems& item) {
 
 // this func prints a basic report consisting of all items
 void BaseReport::generateReport() const {
-    std::cout << "----- Inventory Report -----\n";
+
+    cout << "***************************************************" << endl;
+    cout << "* Inventory Report                                *" << endl;
     for (const auto& item : data_) {
-        std::cout << "Order Number: " << item.orderNumber << std::endl;
-        std::cout << "Product Name: " << item.productName << std::endl;
-        std::cout << "Quantity: " << item.quantity << std::endl;
-        std::cout << "Arrived On: " << item.arrivedOn << std::endl;
-        std::cout << "Expiration Date: " << item.expirationDate << std::endl;
-        std::cout << "Weight: " << item.weight << " kg" << std::endl;
-        std::cout << "Supplier: " << item.supplier << std::endl;
-        std::cout << "---------------------------\n";
+        cout << "* Order Number: " << item.orderNumber << endl;
+        cout << "* Product Name: " << item.productName << endl;
+        cout << "* Quantity: " << item.quantity << endl;
+        cout << "* Arrived On: " << item.arrivedOn << endl;
+        cout << "* Expiration Date: " << item.expirationDate << endl;
+        cout << "* Weight: " << item.weight << " kg" << endl;
+        cout << "* Supplier: " << item.supplier << endl;
+        cout << "*--------------------------------------------------" << endl;
     }
+    cout << "***************************************************" << endl;
 }
