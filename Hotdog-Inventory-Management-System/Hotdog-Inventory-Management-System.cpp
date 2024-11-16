@@ -7,27 +7,28 @@
 #include <vector>
 #include <algorithm> //for transform
 #include "InventoryObj.cpp"
-//#include "BaseReport.h"
 #include "ExpiredReport.h"
 
 
 using namespace std;
 
 void mainmenu();
-void quitFunction();
+void quitFunction(string dispArg);
 void loadData(vector<InventoryItems>& inventory);
 void displayItem(const InventoryItems& item);
-void displayAllItems(const vector<InventoryItems>& inventory);
 void searchItem(const vector<InventoryItems>& inventory);
 
-void quitFunction() {
+void quitFunction(string dispArg) {
     int quitInt;
-    cout << "Are you sure you would you like to quit?" << endl;
-    cout << "Yes (1)" << endl;
-    cout << "No  (0)" << endl;
+    cout << "***************************************************" << endl;
+    cout << "*" << dispArg << endl;
+    cout << "* Yes (1)" << endl;
+    cout << "* No  (0)" << endl;
+    cout << "***************************************************" << endl;
     cin >> quitInt;
 
     if (quitInt == 0) {
+        system("cls");
         mainmenu();
     }
     else {
@@ -61,22 +62,65 @@ void displayItem(const InventoryItems& item) {
     cout << "-----------------------------------" << endl;
 }
 
-// Function to display all inventory items
-void displayAllItems(const vector<InventoryItems>& inventory) {
+template <typename T>
+void displayReport(T& report, const vector<InventoryItems>& inventory) {
     if (inventory.empty()) {
         cout << "No inventory items to display." << endl;
         return;
     }
-    BaseReport foo;
-    ExpiredReport bar;
 
     for (const auto& item : inventory) {
-        foo.addData(item);
-        bar.addData(item);
+        report.addData(item);
     }
 
-    //foo.generateReport();
-    bar.generateReport();
+    report.generateReport();
+}
+
+void reportMenu(const vector<InventoryItems>& inventory) {
+    system("cls");
+
+    int input;
+
+    cout << "***************************************************" << endl;
+    cout << "* Welcome to the Report Section                   *" << endl;
+    cout << "* General Report (1)                              *" << endl;
+    cout << "* Expired Report (2)                              *" << endl;
+    cout << "* Understocked Report (3)                         *" << endl;
+    cout << "* Overstocked Report (4)                          *" << endl;
+    cout << "* Return to Menu (0)                              *" << endl;
+    cout << "***************************************************" << endl;
+
+    cin >> input;
+    ExpiredReport expiredReport;
+    BaseReport baseReport;
+    switch (input) {
+    case 4:
+        /*BaseReport baseReport;
+        displayReport(baseReport, inventory);*/
+        quitFunction("Would you like to close the program?");
+        break;
+    case 3:
+        /*BaseReport baseReport;
+        displayReport(baseReport, inventory);*/
+        quitFunction("Would you like to close the program?");
+        break;
+    case 2:
+        displayReport(expiredReport, inventory);
+        quitFunction("Would you like to close the program?");
+        break;
+    case 1:
+        displayReport(baseReport, inventory);
+        quitFunction("Would you like to close the program?");
+        break;
+    case 0:
+        system("cls");
+        mainmenu();
+        break;
+    default:
+        cout << "Invalid option. Please select a valid menu item." << endl;
+        reportMenu(inventory);
+        break;
+    }
 }
 
 //Function to search for items by product name
@@ -246,10 +290,10 @@ void mainmenu() {
         break;
     case 1:
         cout << "Report Section" << endl;
-        displayAllItems(inventory);
+        reportMenu(inventory);
         break;
     case 0:
-        quitFunction();
+        quitFunction("Are you sure you would you like to quit?");
         break;
     default:
         cout << "Invalid option. Please select a valid menu item." << endl;
