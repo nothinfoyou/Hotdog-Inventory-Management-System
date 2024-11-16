@@ -7,7 +7,9 @@
 #include <vector>
 #include <algorithm> //for transform
 #include "InventoryObj.cpp"
-#include "BaseReport.h"
+//#include "BaseReport.h"
+#include "ExpiredReport.h"
+
 
 using namespace std;
 
@@ -67,12 +69,15 @@ void displayAllItems(const vector<InventoryItems>& inventory) {
         return;
     }
     BaseReport foo;
+    ExpiredReport bar;
 
     for (const auto& item : inventory) {
         foo.addData(item);
+        bar.addData(item);
     }
 
-    foo.generateReport();
+    //foo.generateReport();
+    bar.generateReport();
 }
 
 void enterData(vector<InventoryItems>& inventory) {
