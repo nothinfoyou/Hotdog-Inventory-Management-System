@@ -18,8 +18,37 @@
     <ClCompile Include="Hotdog-Inventory-Management-System.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BaseReport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryObj.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExpiredReport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LowStockReport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OverStockReport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\inventory.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseReport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExpiredReport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LowStockReport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OverStockReport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

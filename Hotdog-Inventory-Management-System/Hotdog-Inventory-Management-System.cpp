@@ -5,38 +5,35 @@
 #include <cmath>
 #include <string>
 #include <vector>
-#include <algorithm> // For transform
+#include <algorithm> //for transform
+#include "InventoryObj.cpp"
+#include "ExpiredReport.h"
+#include "LowStockReport.h"
+#include "OverStockReport.h"
+
 
 using namespace std;
 
-struct InventoryItems {
-    int orderNumber;
-    string productName;
-    int quantity;
-    string arrivedOn;
-    string expirationDate;
-    double weight;
-    string supplier;
-};
-
 void mainmenu();
-void quitFunction();
+void quitFunction(string dispArg);
 void loadData(vector<InventoryItems>& inventory);
 void displayItem(const InventoryItems& item);
-void displayAllItems(const vector<InventoryItems>& inventory);
 void searchItem(const vector<InventoryItems>& inventory);
 void enterData(vector<InventoryItems>& inventory);
 void removeItem(vector<InventoryItems>& inventory);
 void editData(vector<InventoryItems>& inventory);
 
-void quitFunction() {
+void quitFunction(string dispArg) {
     int quitInt;
-    cout << "Are you sure you would like to quit?" << endl;
-    cout << "Yes (1)" << endl;
-    cout << "No  (0)" << endl;
+    cout << "***************************************************" << endl;
+    cout << "*" << dispArg << endl;
+    cout << "* Yes (1)" << endl;
+    cout << "* No  (0)" << endl;
+    cout << "***************************************************" << endl;
     cin >> quitInt;
 
     if (quitInt == 0) {
+        system("cls");
         mainmenu();
     }
     else {
@@ -69,14 +66,67 @@ void displayItem(const InventoryItems& item) {
     cout << "-----------------------------------" << endl;
 }
 
-void displayAllItems(const vector<InventoryItems>& inventory) {
+// this func takes a generic report arg and inventory arg to build and display whichever report was sent
+// DEVNOTE: the report can be one of 4 options, BaseReport, ExpiredReport, LowStockReport,OverStockReport
+template <typename T>
+void displayReport(T& report, const vector<InventoryItems>& inventory) {
     if (inventory.empty()) {
         cout << "No inventory items to display." << endl;
         return;
     }
 
     for (const auto& item : inventory) {
-        displayItem(item);
+        report.addData(item);
+    }
+
+    report.generateReport();
+}
+
+// this func is the report menu section
+void reportMenu(const vector<InventoryItems>& inventory) {
+    system("cls");
+
+    int input;
+
+    cout << "***************************************************" << endl;
+    cout << "* Welcome to the Report Section                   *" << endl;
+    cout << "* General Report (1)                              *" << endl;
+    cout << "* Expired Report (2)                              *" << endl;
+    cout << "* Understocked Report (3)                         *" << endl;
+    cout << "* Overstocked Report (4)                          *" << endl;
+    cout << "* Return to Menu (0)                              *" << endl;
+    cout << "***************************************************" << endl;
+
+    cin >> input;
+    ExpiredReport expiredReport;
+    BaseReport baseReport;
+    LowStockReport lsReport(5);
+    OverStockReport osReport(20);
+    switch (input) {
+    case 4:
+        displayReport(osReport, inventory);
+        quitFunction("Would you like to close the program?");
+        break;
+    case 3:
+        displayReport(lsReport, inventory);
+        quitFunction("Would you like to close the program?");
+        break;
+    case 2:
+        displayReport(expiredReport, inventory);
+        quitFunction("Would you like to close the program?");
+        break;
+    case 1:
+        displayReport(baseReport, inventory);
+        quitFunction("Would you like to close the program?");
+        break;
+    case 0:
+        system("cls");
+        mainmenu();
+        break;
+    default:
+        cout << "Invalid option. Please select a valid menu item." << endl;
+        reportMenu(inventory);
+        break;
     }
 }
 
@@ -399,10 +449,11 @@ void mainmenu() {
         searchItem(inventory);
         break;
     case 1:
-        displayAllItems(inventory);
+        cout << "Report Section" << endl;
+        reportMenu(inventory);
         break;
     case 0:
-        quitFunction();
+        quitFunction("Are you sure you would you like to quit?");
         break;
     default:
         cout << "Invalid option. Please select a valid menu item." << endl;
