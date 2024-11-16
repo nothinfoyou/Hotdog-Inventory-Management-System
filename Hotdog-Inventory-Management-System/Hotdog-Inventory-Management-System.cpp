@@ -27,6 +27,7 @@ void displayAllItems(const vector<InventoryItems>& inventory);
 void searchItem(const vector<InventoryItems>& inventory);
 void enterData(vector<InventoryItems>& inventory);
 void removeItem(vector<InventoryItems>& inventory);
+void editData(vector<InventoryItems>& inventory);
 
 void quitFunction() {
     int quitInt;
@@ -271,6 +272,35 @@ void searchItem(const vector<InventoryItems>& inventory) {
     }
 }
 
+void editData(vector<InventoryItems>& inventory) {
+    if (inventory.empty()) {
+        cout << "No inventory items to edit" << endl;
+        return;
+    }
+    int getOrderNumber;
+    cout << "Enter the order number of the item you would like to edit: ";
+    cin >> getOrderNumber;
+
+    bool found = false;
+    for (auto& item : inventory) {
+        if (item.orderNumber == getOrderNumber) {
+            found = true;
+            displayItem(item);
+            cout << "*****************************************************" << endl;
+            cout << "*Item Found!                                        *" << endl;
+            cout << "*Which field would you like to edit?                *" << endl;
+            cout << "*Product Name   (5)                                 *" << endl;
+            cout << "*Quantity       (4)                                 *" << endl;
+            cout << "*Arrived On     (3)                                 *" << endl;
+            cout << "*Expiration Date(2)                                 *" << endl;
+            cout << "*Weight         (1)                                 *" << endl;
+            cout << "*Supplier       (0)                                 *" << endl;
+            cout << "Enter your selection:                               *" << endl;
+            cout << "*****************************************************" << endl;
+        }
+    }
+}
+
 void mainmenu() {
     vector<InventoryItems> inventory;
     loadData(inventory);
@@ -303,7 +333,7 @@ void mainmenu() {
         removeItem(inventory);
         break;
     case 3:
-        cout << "Unfinished Edit Data Section" << endl;
+        editData(inventory);
         break;
     case 2:
         searchItem(inventory);
