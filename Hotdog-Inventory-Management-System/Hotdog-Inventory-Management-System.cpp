@@ -285,7 +285,6 @@ void editData(vector<InventoryItems>& inventory) {
     for (auto& item : inventory) {
         if (item.orderNumber == getOrderNumber) {
             found = true;
-            displayItem(item);
             cout << "*****************************************************" << endl;
             cout << "*Item Found!                                        *" << endl;
             cout << "*Which field would you like to edit?                *" << endl;
@@ -297,6 +296,67 @@ void editData(vector<InventoryItems>& inventory) {
             cout << "*Supplier       (0)                                 *" << endl;
             cout << "Enter your selection:                               *" << endl;
             cout << "*****************************************************" << endl;
+            int field;
+            cin >> field;
+            cin.ignore();
+
+            switch (field) {
+            case 0:
+                cout << "Enter a new supplier: ";
+                getline(cin, item.productName);
+                break;
+            case 1:
+                cout << "Enter a new weight: ";
+                cin >> item.weight;
+                break;
+            case 2:
+                cout << "Enter new expiration date (MM-DD-YYYY): ";
+                getline(cin, item.expirationDate);
+                break;
+            case 3:
+                cout << "Enter new arrival date (MM-DD-YYYY): ";
+                getline(cin, item.arrivedOn);
+                break;
+            case 4:
+                cout << "Enter new quantity: ";
+                cin >> item.quantity;
+                break;
+            case 5:
+                cout << "Enter new product name: ";
+                getline(cin, item.productName);
+                break;
+            default:
+                cout << "Invalid field. No chages made.";
+                return;
+            }
+            cout << "Item updated successfully!" << endl;
+            displayItem(item);
+
+            ofstream fout("../inventory.txt");
+            if (!fout) {
+                cout << "Error updating file" << endl;
+                return;
+            }
+            for (const auto& updatedItem : inventory) {
+                fout << updatedItem.orderNumber << " " << updatedItem.productName << " " << updatedItem.quantity << " "
+                    << updatedItem.arrivedOn << " " << updatedItem.expirationDate << " " << updatedItem.weight << " "
+                    << updatedItem.supplier << endl;
+            }
+            fout.close();
+            cout << "Inventory file updated" << endl;
+            break;
+        }
+    }
+    if (!found) {
+        cout << "No item found with that order number" << endl;
+        cout << "Would you like to edit another entry?" << endl;
+        cout << "Yes (1)" << endl;
+        cout << "No  (0)" << endl;
+        int choice;
+        cin >> choice;
+        if (choice == 1) {
+            system("cls");
+            editData(inventory);
         }
     }
 }
