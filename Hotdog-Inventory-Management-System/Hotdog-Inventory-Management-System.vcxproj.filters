@@ -27,6 +27,12 @@
     <ClCompile Include="ExpiredReport.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LowStockReport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OverStockReport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\inventory.txt" />
@@ -36,6 +42,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ExpiredReport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LowStockReport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OverStockReport.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
