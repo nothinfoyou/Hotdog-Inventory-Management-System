@@ -1,11 +1,14 @@
 #include "BaseReport.h"
-
-// Add an inventory item to the report
+/*  This class is used to build a BaseReport
+*       that is then used in child classes to build a more narrowed final report
+*   Sean Armstrong 901 81 1616
+*/
+// this func adds a "item" to the collection
 void BaseReport::addData(const InventoryItems& item) {
-    data_.push_back(item);  // Push the inventory item to the vector
+    data_.push_back(item); 
 }
 
-// Generate and print the report
+// this func prints a basic report consisting of all items
 void BaseReport::generateReport() const {
     std::cout << "----- Inventory Report -----\n";
     for (const auto& item : data_) {

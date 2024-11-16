@@ -5,16 +5,18 @@
 #include <string>
 #include <iostream>
 #include "InventoryObj.cpp"
-
+/*  This class is used to build a BaseReport 
+*       that is then used in child classes to build a more narrowed final report
+*   Sean Armstrong 901 81 1616
+*/
 class BaseReport {
 public:
-    // Function to add an inventory item to the report
     void addData(const InventoryItems& item);
-
-    // Function to generate and display the report
     void generateReport() const;
-private:
-    std::vector<InventoryItems> data_;  // Vector to store the inventory items
+    const std::vector<InventoryItems>& getData() const { return data_; }
+
+protected:
+    std::vector<InventoryItems> data_;
 };
 
 #endif
