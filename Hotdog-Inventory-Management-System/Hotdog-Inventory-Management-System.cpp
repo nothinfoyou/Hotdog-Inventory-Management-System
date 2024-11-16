@@ -8,6 +8,8 @@
 #include <algorithm> //for transform
 #include "InventoryObj.cpp"
 #include "ExpiredReport.h"
+#include "LowStockReport.h"
+#include "OverStockReport.h"
 
 
 using namespace std;
@@ -64,6 +66,8 @@ void displayItem(const InventoryItems& item) {
     cout << "-----------------------------------" << endl;
 }
 
+// this func takes a generic report arg and inventory arg to build and display whichever report was sent
+// DEVNOTE: the report can be one of 4 options, BaseReport, ExpiredReport, LowStockReport,OverStockReport
 template <typename T>
 void displayReport(T& report, const vector<InventoryItems>& inventory) {
     if (inventory.empty()) {
@@ -78,6 +82,7 @@ void displayReport(T& report, const vector<InventoryItems>& inventory) {
     report.generateReport();
 }
 
+// this func is the report menu section
 void reportMenu(const vector<InventoryItems>& inventory) {
     system("cls");
 
@@ -95,15 +100,15 @@ void reportMenu(const vector<InventoryItems>& inventory) {
     cin >> input;
     ExpiredReport expiredReport;
     BaseReport baseReport;
+    LowStockReport lsReport(5);
+    OverStockReport osReport(20);
     switch (input) {
     case 4:
-        /*BaseReport baseReport;
-        displayReport(baseReport, inventory);*/
+        displayReport(osReport, inventory);
         quitFunction("Would you like to close the program?");
         break;
     case 3:
-        /*BaseReport baseReport;
-        displayReport(baseReport, inventory);*/
+        displayReport(lsReport, inventory);
         quitFunction("Would you like to close the program?");
         break;
     case 2:

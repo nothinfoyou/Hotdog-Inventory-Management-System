@@ -1,4 +1,4 @@
-#ifndef BaseReport_h
+#ifndef BaseReport_H
 #define BaseReport_H
 
 #include <vector>
