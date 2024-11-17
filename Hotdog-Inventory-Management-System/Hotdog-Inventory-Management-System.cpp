@@ -128,6 +128,7 @@ void reportMenu(const vector<InventoryItems>& inventory) {
     }
 }
 
+//function to add new item to inventory
 void enterData(vector<InventoryItems>& inventory) {
     InventoryItems newItem;
     cout << "Please enter the new item's order number: ";
@@ -171,6 +172,7 @@ void enterData(vector<InventoryItems>& inventory) {
     displayItem(newItem);
 }
 
+//function to remove items based on order number
 void removeItem(vector<InventoryItems>& inventory) {
     if (inventory.empty()) {
         cout << "No inventory items to remove." << endl;
@@ -217,6 +219,7 @@ void removeItem(vector<InventoryItems>& inventory) {
     }
 }
 
+// function to search items based on field
 void searchItem(const vector<InventoryItems>& inventory) {
     int field;
     cout << "*****************************************************" << endl;
@@ -320,6 +323,7 @@ void searchItem(const vector<InventoryItems>& inventory) {
     }
 }
 
+//edit function to edit inventory item fields 
 void editData(vector<InventoryItems>& inventory) {
     if (inventory.empty()) {
         cout << "No inventory items to edit" << endl;
@@ -409,6 +413,7 @@ void editData(vector<InventoryItems>& inventory) {
     }
 }
 
+//main menu function where users can select different options
 void mainmenu() {
     vector<InventoryItems> inventory;
     loadData(inventory);
