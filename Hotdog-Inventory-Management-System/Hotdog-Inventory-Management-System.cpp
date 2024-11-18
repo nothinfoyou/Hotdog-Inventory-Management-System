@@ -27,7 +27,7 @@ void returnToMainMenu(string confirmation) {
     while (true) {
         int input;
         cout << "***************************************************" << endl;
-        cout << "*" << confirmation << endl;
+        cout << "* " << confirmation << endl;
         cout << "* Yes (1)" << endl;
         cout << "* No  (0)" << endl;
         cout << "***************************************************" << endl;
@@ -372,7 +372,12 @@ void editData(vector<InventoryItems>& inventory) {
         return;
     }
     int getOrderNumber;
-    cout << "Enter the order number of the item you would like to edit: ";
+
+    cout << "*************************************************************" << endl;
+    cout << "*Edit Item Section                                          *" << endl;
+    cout << "*Enter the order number of the item you would like to edit: *" << endl;
+    cout << "*                                                           *" << endl;
+    cout << "*************************************************************" << endl;
     cin >> getOrderNumber;
 
     bool found = false;
@@ -382,12 +387,13 @@ void editData(vector<InventoryItems>& inventory) {
             cout << "*****************************************************" << endl;
             cout << "*Item Found!                                        *" << endl;
             cout << "*Which field would you like to edit?                *" << endl;
-            cout << "*Product Name   (5)                                 *" << endl;
-            cout << "*Quantity       (4)                                 *" << endl;
-            cout << "*Arrived On     (3)                                 *" << endl;
-            cout << "*Expiration Date(2)                                 *" << endl;
-            cout << "*Weight         (1)                                 *" << endl;
-            cout << "*Supplier       (0)                                 *" << endl;
+            cout << "*Product Name   (6)                                 *" << endl;
+            cout << "*Quantity       (5)                                 *" << endl;
+            cout << "*Arrived On     (4)                                 *" << endl;
+            cout << "*Expiration Date(3)                                 *" << endl;
+            cout << "*Weight         (2)                                 *" << endl;
+            cout << "*Supplier       (1)                                 *" << endl;
+            cout << "*Back           (0)                                 *" << endl;
             cout << "Enter your selection:                               *" << endl;
             cout << "*****************************************************" << endl;
             int editField;
@@ -396,26 +402,30 @@ void editData(vector<InventoryItems>& inventory) {
 
             switch (editField) {
             case 0:
+                system("cls");
+                returnToMainMenu("Would you like to return to the main menu?");
+
+            case 1:
                 cout << "Enter a new supplier: ";
                 getline(cin, item.productName);
                 break;
-            case 1:
+            case 2:
                 cout << "Enter a new weight: ";
                 cin >> item.weight;
                 break;
-            case 2:
+            case 3:
                 cout << "Enter new expiration date (MM-DD-YYYY): ";
                 getline(cin, item.expirationDate);
                 break;
-            case 3:
+            case 4:
                 cout << "Enter new arrival date (MM-DD-YYYY): ";
                 getline(cin, item.arrivedOn);
                 break;
-            case 4:
+            case 5:
                 cout << "Enter new quantity: ";
                 cin >> item.quantity;
                 break;
-            case 5:
+            case 6:
                 cout << "Enter new product name: ";
                 getline(cin, item.productName);
                 break;
@@ -437,8 +447,10 @@ void editData(vector<InventoryItems>& inventory) {
                     << updatedItem.supplier << endl;
             }
             fout.close();
-            cout << "Inventory file updated" << endl;
             break;
+            system("cls");
+            cout << "Inventory file updated. Returning to main menu." << endl;
+            mainmenu();
         }
     }
     if (!found) {
@@ -450,6 +462,16 @@ void editData(vector<InventoryItems>& inventory) {
         cin >> choice;
         if (choice == 1) {
             system("cls");
+            editData(inventory);
+        }
+        if (choice == 0) {
+            system("cls");
+            cout << "Returning to main menu." << endl;
+            mainmenu();
+        }
+        else {
+            system("cls");
+            cout << "Invalid selection. Returning to edit section." << endl;
             editData(inventory);
         }
     }
