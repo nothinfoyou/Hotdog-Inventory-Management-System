@@ -198,7 +198,7 @@ void enterData(vector<InventoryItems>& inventory) {
     getline(cin, newItem.expirationDate);
 
     cout << "**************************************************************" << endl;
-    cout << "*Enter the weight of the item you would like to add:       *" << endl;
+    cout << "*Enter the weight of the item you would like to add:         *" << endl;
     cout << "*                                                            *" << endl;
     cout << "**************************************************************" << endl;
     cin >> newItem.weight;
@@ -235,22 +235,28 @@ void removeItem(vector<InventoryItems>& inventory) {
     }
 
     int removeNumber;
-    cout << "**************************************************************" << endl;
-    cout << "*Welcome to the Remove Item Section                          *" << endl;
-    cout << "*Enter the order number of the item you would like to remove:*" << endl;
-    cout << "**************************************************************" << endl;
+    cout << "****************************************************************" << endl;
+    cout << "* Welcome to the Remove Item Section                           *" << endl;
+    cout << "* Enter the order number of the item you would like to remove: *" << endl;
+    cout << "****************************************************************" << endl;
 
     cin >> removeNumber;
-
     bool found = false;
+
     for (size_t i = 0; i < inventory.size(); ++i) {
         if (inventory[i].orderNumber == removeNumber) {
             found = true;
-            cout << "Are you sure you want to remove this item?" << endl;
+
+            cout << "*****************************************************" << endl;
+            cout << "* Item Found!                                       *" << endl;
+            cout << "*****************************************************" << endl;
             displayItem(inventory[i]);
+
+            cout << "Are you sure you want to remove this item?" << endl;
             cout << "Yes (1) / No (0): ";
             int confirm;
             cin >> confirm;
+
             if (confirm == 1) {
                 inventory.erase(inventory.begin() + i);
                 cout << "Item removed from inventory." << endl;
@@ -260,11 +266,13 @@ void removeItem(vector<InventoryItems>& inventory) {
                     cout << "Error updating file." << endl;
                     return;
                 }
+
                 for (const auto& item : inventory) {
                     fout << item.orderNumber << " " << item.productName << " " << item.quantity << " "
                         << item.arrivedOn << " " << item.expirationDate << " " << item.weight << " "
                         << item.supplier << endl;
                 }
+
                 fout.close();
                 cout << "Inventory file updated." << endl;
             }
@@ -274,12 +282,33 @@ void removeItem(vector<InventoryItems>& inventory) {
             break;
         }
     }
+
     if (!found) {
-        system("cls");
         cout << "No item found with that order number." << endl;
-        removeItem(inventory); 
+        cout << "Would you like to try removing another item?" << endl;
+        cout << "Yes (1)" << endl;
+        cout << "No  (0)" << endl;
+
+        int choice;
+        cin >> choice;
+
+        if (choice == 1) {
+            system("cls");
+            removeItem(inventory);
+        }
+        else if (choice == 0) {
+            system("cls");
+            cout << "Returning to main menu." << endl;
+            mainmenu();
+        }
+        else {
+            system("cls");
+            cout << "Invalid selection. Returning to remove item section." << endl;
+            removeItem(inventory);
+        }
     }
 }
+
 
 // function to search items based on field
 void searchItem(const vector<InventoryItems>& inventory) {
