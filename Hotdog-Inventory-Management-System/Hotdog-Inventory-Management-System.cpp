@@ -419,7 +419,6 @@ void mainmenu() {
 
     cout << "***************************************************" << endl;
     cout << "*Welcome to the Hotdog Inventory Management System*" << endl;
-    cout << "*Order        (6)                                 *" << endl;
     cout << "*Enter Data   (5)                                 *" << endl;
     cout << "*Remove Data  (4)                                 *" << endl;
     cout << "*Edit Data    (3)                                 *" << endl;
@@ -433,9 +432,6 @@ void mainmenu() {
     system("cls"); // Clear the screen (Windows-specific)
 
     switch (input) {
-    case 6:
-        cout << "Unfinished Order section" << endl;
-        break;
     case 5:
         enterData(inventory);
         break;
