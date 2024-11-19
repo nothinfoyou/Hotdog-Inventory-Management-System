@@ -573,7 +573,6 @@ void mainmenu() {
         searchItem(inventory);
         break;
     case 1:
-        cout << "Report Section" << endl;
         reportMenu(inventory);
         break;
     case 0:
