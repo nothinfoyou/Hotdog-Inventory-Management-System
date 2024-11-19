@@ -274,7 +274,9 @@ void removeItem(vector<InventoryItems>& inventory) {
                 }
 
                 fout.close();
-                cout << "Inventory file updated." << endl;
+                system("cls");
+                cout << "Inventory file updated. Returning to main menu." << endl;
+                mainmenu(); 
             }
             else {
                 cout << "Item was not removed." << endl;
@@ -308,6 +310,7 @@ void removeItem(vector<InventoryItems>& inventory) {
         }
     }
 }
+
 
 
 // function to search items based on field
