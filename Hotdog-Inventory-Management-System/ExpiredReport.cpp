@@ -13,22 +13,30 @@ using namespace std;
 // DEVNOTE: false = unexpired | true = expired
 bool ExpiredReport::isExpired(const std::string& expirationDate) const {
     __time64_t timestamp = time(NULL);
+    struct tm currentTime;
+    gmtime_s(&currentTime, &timestamp);
 
-    struct tm expDate;
-    localtime_s(&expDate, &timestamp);
+    struct tm expDate = {}; 
 
-    char output[50];
-    strftime(output, 50, "%m/%d/%Y", &expDate);
+    // parse expirationDate str into expDate obj
+    std::istringstream ss(expirationDate);
+    ss >> get_time(&expDate, "%m/%d/%Y");
 
-    istringstream ss(expirationDate);
-
-    ss >> std::get_time(&expDate, "%m/%d/%Y");
-    
+    // converts expDate to UTC
     __time64_t expirationTime = mktime(&expDate);
 
-    __time64_t currentTime = time(nullptr);
+    if (expirationTime == (time_t)-1) {
+        return false;
+    }
 
-    return expirationTime < currentTime;
+    // gets current time in UTC
+    __time64_t currentTime_t = mktime(&currentTime);
+
+    if (currentTime_t == (time_t)-1) {
+        return false;
+    }
+
+    return expirationTime < currentTime_t;
 }
 
 // this func iterates through each item and prints out the item description if it is expired
@@ -41,10 +49,7 @@ void ExpiredReport::generateReport() const {
             cout << "* Order Number: " << item.orderNumber << std::endl;
             cout << "* Product Name: " << item.productName << std::endl;
             cout << "* Quantity: " << item.quantity << std::endl;
-            //std::cout << "Arrived On: " << item.arrivedOn << std::endl;
             cout << "* Expiration Date: " << item.expirationDate << std::endl;
-            //std::cout << "Weight: " << item.weight << " kg" << std::endl;
-            //std::cout << "Supplier: " << item.supplier << std::endl;
             cout << "*--------------------------------------------------" << endl;
         }
     }
