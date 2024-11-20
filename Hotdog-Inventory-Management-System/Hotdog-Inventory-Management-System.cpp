@@ -167,10 +167,17 @@ void enterData(vector<InventoryItems>& inventory) {
 
     cout << "**************************************************************" << endl;
     cout << "*Welcome to the Add Item Section                             *" << endl;
-    cout << "*Enter the order number of the item you would like to add:   *" << endl;
+    cout << "*Enter the order number of the item you would like to add,   *" << endl;
+    cout << "* or type 0 to return to the main menu:                      *" << endl;
     cout << "**************************************************************" << endl;
     cin >> newItem.orderNumber;
     cin.ignore();
+
+    if (newItem.orderNumber == 0) {
+        system("cls");
+        cout << "Returning to main menu." << endl;
+        mainmenu();
+    }
 
     cout << "**************************************************************" << endl;
     cout << "*Enter the product name of the item you would like to add:   *" << endl;
@@ -225,6 +232,7 @@ void enterData(vector<InventoryItems>& inventory) {
     fout.close();
     cout << "\nNew item added successfully!\n" << endl;
     displayItem(newItem);
+    quitFunction("Would you like to exit the application?");
 }
 
 //function to remove items based on order number
@@ -237,11 +245,18 @@ void removeItem(vector<InventoryItems>& inventory) {
     int removeNumber;
     cout << "****************************************************************" << endl;
     cout << "* Welcome to the Remove Item Section                           *" << endl;
-    cout << "* Enter the order number of the item you would like to remove: *" << endl;
+    cout << "* Enter the order number of the item you would like to remove, *" << endl;
+    cout << "* or type 0 to return to the main menu:                        *"<<endl;
     cout << "****************************************************************" << endl;
 
     cin >> removeNumber;
     bool found = false;
+
+    if (removeNumber == 0) {
+        system("cls");
+        cout << "Returning to main menu." << endl;
+        mainmenu();
+    }
 
     for (size_t i = 0; i < inventory.size(); ++i) {
         if (inventory[i].orderNumber == removeNumber) {
@@ -259,7 +274,8 @@ void removeItem(vector<InventoryItems>& inventory) {
 
             if (confirm == 1) {
                 inventory.erase(inventory.begin() + i);
-                cout << "Item removed from inventory." << endl;
+                cout << "Item removed from inventory successfully." << endl;
+                returnToMainMenu("Would you like to return to the main menu?");
 
                 ofstream fout("../inventory.txt");
                 if (!fout) {
@@ -279,7 +295,9 @@ void removeItem(vector<InventoryItems>& inventory) {
                 mainmenu(); 
             }
             else {
+                system("cls");
                 cout << "Item was not removed." << endl;
+                removeItem(inventory);
             }
             break;
         }
@@ -339,6 +357,7 @@ void searchItem(const vector<InventoryItems>& inventory) {
             if (item.orderNumber == orderNumber) {
                 displayItem(item);
                 found = true;
+                quitFunction("Would you like to exit the application?");
             }
         }
     }
@@ -351,6 +370,7 @@ void searchItem(const vector<InventoryItems>& inventory) {
             if (item.productName == productName) {
                 displayItem(item);
                 found = true;
+                quitFunction("Would you like to exit the application?");
             }
         }
     }
@@ -362,6 +382,7 @@ void searchItem(const vector<InventoryItems>& inventory) {
             if (item.quantity == quantity) {
                 displayItem(item);
                 found = true;
+                quitFunction("Would you like to exit the application?");
             }
         }
     }
@@ -373,6 +394,7 @@ void searchItem(const vector<InventoryItems>& inventory) {
             if (item.arrivedOn == arrivedOn) {
                 displayItem(item);
                 found = true;
+                quitFunction("Would you like to exit the application?");
             }
         }
     }
@@ -384,6 +406,7 @@ void searchItem(const vector<InventoryItems>& inventory) {
             if (item.expirationDate == expirationDate) {
                 displayItem(item);
                 found = true;
+                quitFunction("Would you like to exit the application?");
             }
         }
     }
@@ -395,6 +418,7 @@ void searchItem(const vector<InventoryItems>& inventory) {
             if (item.weight == weight) {
                 displayItem(item);
                 found = true;
+                quitFunction("Would you like to exit the application?");
             }
         }
     }
@@ -407,6 +431,7 @@ void searchItem(const vector<InventoryItems>& inventory) {
             if (item.supplier == supplier) {
                 displayItem(item);
                 found = true;
+                quitFunction("Would you like to exit the application?");
             }
         }
     }
@@ -493,6 +518,7 @@ void editData(vector<InventoryItems>& inventory) {
             default:
                 cout << "Invalid field. No chages made.";
                 return;
+                returnToMainMenu("Would you like to return to the main menu?");
             }
             cout << "Item updated successfully!" << endl;
             displayItem(item);
@@ -501,6 +527,7 @@ void editData(vector<InventoryItems>& inventory) {
             if (!fout) {
                 cout << "Error updating file" << endl;
                 return;
+                returnToMainMenu("Would you like to return to the main menu?");
             }
             for (const auto& updatedItem : inventory) {
                 fout << updatedItem.orderNumber << " " << updatedItem.productName << " " << updatedItem.quantity << " "
