@@ -288,8 +288,6 @@ void removeItem(vector<InventoryItems>& inventory) {
                         << item.supplier << endl;
                 }
 
-                fout.flush();
-
                 fout.close();
                 system("cls");
                 cout << "Inventory file updated. Returning to main menu." << endl;
