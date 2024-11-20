@@ -113,7 +113,7 @@ void displayReport(T& report, const vector<InventoryItems>& inventory) {
     report.generateReport();
 }
 
-// this func is the report menu section
+// this func is the report menu sectionds
 void reportMenu(const vector<InventoryItems>& inventory) {
     system("cls");
 
@@ -275,7 +275,6 @@ void removeItem(vector<InventoryItems>& inventory) {
             if (confirm == 1) {
                 inventory.erase(inventory.begin() + i);
                 cout << "Item removed from inventory successfully." << endl;
-                returnToMainMenu("Would you like to return to the main menu?");
 
                 ofstream fout("../inventory.txt");
                 if (!fout) {
@@ -289,6 +288,8 @@ void removeItem(vector<InventoryItems>& inventory) {
                         << item.supplier << endl;
                 }
 
+                fout.flush();
+
                 fout.close();
                 system("cls");
                 cout << "Inventory file updated. Returning to main menu." << endl;
@@ -297,7 +298,8 @@ void removeItem(vector<InventoryItems>& inventory) {
             else {
                 system("cls");
                 cout << "Item was not removed." << endl;
-                removeItem(inventory);
+                mainmenu();
+                return;
             }
             break;
         }
@@ -323,8 +325,8 @@ void removeItem(vector<InventoryItems>& inventory) {
         }
         else {
             system("cls");
-            cout << "Invalid selection. Returning to remove item section." << endl;
-            removeItem(inventory);
+            cout << "Invalid selection. Returning to main menu." << endl;
+            mainmenu();
         }
     }
 }
