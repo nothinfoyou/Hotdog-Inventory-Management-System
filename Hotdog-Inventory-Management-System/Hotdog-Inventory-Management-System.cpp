@@ -490,7 +490,7 @@ void editData(vector<InventoryItems>& inventory) {
             case 0:
                 system("cls");
                 returnToMainMenu("Would you like to return to the main menu?");
-
+                break;
             case 1:
                 cout << "Enter a new supplier: ";
                 getline(cin, item.productName);

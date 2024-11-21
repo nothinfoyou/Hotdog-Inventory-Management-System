@@ -50,3 +50,4 @@
 150 Buns 9 11/06/2024 11/16/2024 1.5 Bakers_Delight
 151 Hotdog 5 05-29-2024 05-31-2025 5 Bingus
 152 Buns 8 08-21-2024 08-30-2024 9 Buns-R-Us
+153 Sausage 9 11-21-2024 11-28-2024 8 General
