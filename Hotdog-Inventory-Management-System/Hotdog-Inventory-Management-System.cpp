@@ -470,6 +470,7 @@ void editData(vector<InventoryItems>& inventory) {
     for (auto& item : inventory) {
         if (item.orderNumber == getOrderNumber) {
             found = true;
+            displayItem(item);
             cout << "*****************************************************" << endl;
             cout << "*Item Found!                                        *" << endl;
             cout << "*Which field would you like to edit?                *" << endl;
@@ -492,11 +493,11 @@ void editData(vector<InventoryItems>& inventory) {
                 returnToMainMenu("Would you like to return to the main menu?");
                 break;
             case 1:
-                cout << "Enter a new supplier: ";
+                cout << "Enter a new supplier (Do not input spaces): ";
                 cin >> item.supplier;
                 break;
             case 2:
-                cout << "Enter a new weight: ";
+                cout << "Enter a new weight in lbs: ";
                 cin >> item.weight;
                 break;
             case 3:
@@ -512,7 +513,7 @@ void editData(vector<InventoryItems>& inventory) {
                 cin >> item.quantity;
                 break;
             case 6:
-                cout << "Enter new product name: ";
+                cout << "Enter new product name (Do not input spaces): ";
                 cin >> item.productName;
                 break;
             default:
@@ -535,10 +536,25 @@ void editData(vector<InventoryItems>& inventory) {
                     << updatedItem.supplier << endl;
             }
             fout.close();
-            break;
             system("cls");
-            cout << "Inventory file updated. Returning to main menu." << endl;
-            mainmenu();
+            displayItem(item);
+            cout << "Inventory file updated. Would you like to edit another field? Type 1 for yes and 0 for no." << endl;
+            int editAgain;
+            cin >> editAgain;
+            if (editAgain == 1) {
+                system("cls");
+                editData(inventory);
+            }
+            else if (editAgain == 0) {
+                system("cls");
+                mainmenu();
+            }
+            else {
+                cout << "Invalid input. Returning to main menu." << endl;
+                system("cls");
+                mainmenu();
+            }
+            break;
         }
     }
     if (!found) {
