@@ -357,9 +357,9 @@ void searchItem(const vector<InventoryItems>& inventory) {
             if (item.orderNumber == orderNumber) {
                 displayItem(item);
                 found = true;
-                quitFunction("Would you like to exit the application?");
             }
         }
+        quitFunction("Would you like to exit the application?");
     }
     else if (field == 6) {
         string productName;
@@ -370,9 +370,9 @@ void searchItem(const vector<InventoryItems>& inventory) {
             if (item.productName == productName) {
                 displayItem(item);
                 found = true;
-                quitFunction("Would you like to exit the application?");
             }
         }
+        quitFunction("Would you like to exit the application?");
     }
     else if (field == 5) {
         int quantity;
@@ -382,9 +382,9 @@ void searchItem(const vector<InventoryItems>& inventory) {
             if (item.quantity == quantity) {
                 displayItem(item);
                 found = true;
-                quitFunction("Would you like to exit the application?");
             }
         }
+        quitFunction("Would you like to exit the application?");
     }
     else if (field == 4) {
         string arrivedOn;
@@ -394,9 +394,9 @@ void searchItem(const vector<InventoryItems>& inventory) {
             if (item.arrivedOn == arrivedOn) {
                 displayItem(item);
                 found = true;
-                quitFunction("Would you like to exit the application?");
             }
         }
+        quitFunction("Would you like to exit the application?");
     }
     else if (field == 3) {
         string expirationDate;
@@ -406,9 +406,9 @@ void searchItem(const vector<InventoryItems>& inventory) {
             if (item.expirationDate == expirationDate) {
                 displayItem(item);
                 found = true;
-                quitFunction("Would you like to exit the application?");
             }
         }
+        quitFunction("Would you like to exit the application?");
     }
     else if (field == 2) {
         double weight;
@@ -418,9 +418,9 @@ void searchItem(const vector<InventoryItems>& inventory) {
             if (item.weight == weight) {
                 displayItem(item);
                 found = true;
-                quitFunction("Would you like to exit the application?");
             }
         }
+        quitFunction("Would you like to exit the application?");
     }
     else if (field == 1) {
         string supplier;
@@ -431,9 +431,9 @@ void searchItem(const vector<InventoryItems>& inventory) {
             if (item.supplier == supplier) {
                 displayItem(item);
                 found = true;
-                quitFunction("Would you like to exit the application?");
             }
         }
+        quitFunction("Would you like to exit the application?");
     }
     else if (field == 0) {
         system("cls");
