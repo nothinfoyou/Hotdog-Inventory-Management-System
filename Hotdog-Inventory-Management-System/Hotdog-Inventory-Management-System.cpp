@@ -493,7 +493,7 @@ void editData(vector<InventoryItems>& inventory) {
                 break;
             case 1:
                 cout << "Enter a new supplier: ";
-                getline(cin, item.productName);
+                cin >> item.supplier;
                 break;
             case 2:
                 cout << "Enter a new weight: ";
@@ -501,11 +501,11 @@ void editData(vector<InventoryItems>& inventory) {
                 break;
             case 3:
                 cout << "Enter new expiration date (MM-DD-YYYY): ";
-                getline(cin, item.expirationDate);
+                cin >> item.expirationDate;
                 break;
             case 4:
                 cout << "Enter new arrival date (MM-DD-YYYY): ";
-                getline(cin, item.arrivedOn);
+                cin >> item.arrivedOn;
                 break;
             case 5:
                 cout << "Enter new quantity: ";
@@ -513,7 +513,7 @@ void editData(vector<InventoryItems>& inventory) {
                 break;
             case 6:
                 cout << "Enter new product name: ";
-                getline(cin, item.productName);
+                cin >> item.productName;
                 break;
             default:
                 cout << "Invalid field. No chages made.";
